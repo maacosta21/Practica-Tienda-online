@@ -7,16 +7,24 @@ const toggleThemeMobile = document.querySelector('.toggle-theme-mobile')
 const themeAdvisor = document.querySelector('.theme-advisor')
 const themeAdvisorMobile = document.querySelector('.theme-advisor-mobile')
 const body = document.querySelector('body')
+const myOrder = document.querySelector('.my-order')
+const shoppingCart = document.querySelector('.Navbar-shppingcar')
+const btoDeleteItem = document.querySelector('.delete-item')
+const shoppingcartItem = document.querySelector('.shopping-cart')
+
+
 
 //Toggle-DesktopMenu
 UserMenu.addEventListener('click', (event)=>{
    event.preventDefault()
    desktopMenu.classList.toggle('inactive')
+   myOrder.classList.add('inactive')
 })
 
 //toggle-MobileMenu
 UserMenuMobile.addEventListener('click', ()=>{
    mobileMenu.classList.toggle('inactive')
+   myOrder.classList.add('inactive')
 })
 
 //toggle-Theme
@@ -50,3 +58,18 @@ if(localStorageTheme === 'On'){
    themeAdvisor.textContent = 'Off'
    themeAdvisorMobile.textContent = 'Off'
 }
+
+//Toggle Order with Shopping car
+shoppingCart.addEventListener('click', (event)=>{
+   event.preventDefault()
+   myOrder.classList.toggle('inactive')
+   desktopMenu.classList.add('inactive')
+   mobileMenu.classList.add('inactive')
+})
+
+//shopping cart listeners
+
+myOrder.addEventListener('click', (event) => {
+   event.target.classList.contains('delete-item')
+   event.target.closest('.shopping-cart').remove()
+})
